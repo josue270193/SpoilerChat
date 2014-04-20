@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"    
+    android:layout_height="match_parent"
+	android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <ImageButton
+        android:id="@+id/imagen_persona"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"         
+  		android:adjustViewBounds="true"  
+  		android:maxWidth="50dp"  
+  		android:maxHeight="50dp"  
+  		android:scaleType="fitCenter"  
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/nombre_persona"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/imagen_persona"
+        android:text="Large Text"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/ultimo_mensaje"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"        
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/imagen_persona"
+        android:layout_below="@+id/nombre_persona"	
+        android:text="TextView"
+        android:textSize="10dp" />
+
+
+</RelativeLayout>

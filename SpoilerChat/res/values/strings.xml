@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SpoilerChat</string>
+    <string name="title_section1">Chats</string>
+    <string name="title_section2">Likes</string>
+    <string name="title_section3">Configuracion</string>
+    <string name="action_settings">Escribir</string>
+    <string name="itemdeleted">Item deleted</string>
+    <string name="taptoundo">Tap to undo</string>
+    
+     <plurals name="countdown_seconds">
+        <item quantity="one">Dismissing in 1...</item>
+        <item quantity="other">Dismissing in %d...</item>
+    </plurals>
+    
+    <string name="countdown_dismissing">Dismissing</string>
+</resources>
