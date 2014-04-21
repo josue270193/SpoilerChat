@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app_name="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.app.spoilerchat.ChatActivity" >
+
+    <item
+        android:id="@+id/activar_opcion_1"
+        android:orderInCategory="100"
+        android:title="opcion 1"
+        app_name:showAsAction="always"
+        />
+	<item
+        android:id="@+id/activar_opcion_2"
+        android:orderInCategory="100"
+        android:title="opcion 2"
+        app_name:showAsAction="always"
+        />
+	<item
+        android:id="@+id/activar_opcion_3"
+        android:orderInCategory="100"
+        android:title="opcion 3"
+        app_name:showAsAction="always"
+        />
+</menu>

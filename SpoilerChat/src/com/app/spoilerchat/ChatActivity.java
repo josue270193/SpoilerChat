@@ -2,13 +2,23 @@ package com.app.spoilerchat;
 
 import java.util.Locale;
 
+import com.app.spoilerchat.tools.WindowFlotant;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -29,6 +39,8 @@ public class ChatActivity extends ActionBarActivity implements ActionBar.TabList
 	
 	private SectionsPagerAdapter adaptador_paginas;
 	private ViewPager pagina_vista;
+
+	private int id_notificacion = 1000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -83,26 +95,40 @@ public class ChatActivity extends ActionBarActivity implements ActionBar.TabList
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		Log.e("ACA", "1");
-		//Toast.makeText(context, "Request: "+requestCode + " result: "+resultCode, Toast.LENGTH_SHORT).show();
-		/*
-		if (requestCode == configuracion.REQUEST_ENABLE_BT) {
-			Log.e("ACA", "2");
-			Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
-			
-			if (resultCode == Activity.RESULT_OK) {
-				Log.e("ACA", "3.1");
-				configuracion.buscarEquiposBluetooth();
-				
-			}
-			else{
-				Log.e("ACA", "3.2");
-				Toast.makeText(this, "Error al activar el Servicio de Bluetooth/nIntente otra vez", Toast.LENGTH_SHORT).show();
-				
-			}	       
-		}
-		*/
+		super.onActivityResult(requestCode, resultCode, data);		
+	}
+	
+	@Override
+	protected void onResume() {
+		stopService(new Intent(ChatActivity.this, WindowFlotant.class));
+		NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+		notificationManager.cancel(id_notificacion);
+		super.onResume();
+	}
+	
+	@Override
+	public void onBackPressed() {
+	    moveTaskToBack(true);
+	}
+	
+	@Override
+	protected void onPause() {
+		super.onPause();
+		startService(new Intent(ChatActivity.this, WindowFlotant.class));
+		//crearNotificacion();
+		
+	}
+	
+
+    
+
+
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		stopService(new Intent(ChatActivity.this, WindowFlotant.class));
+		NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+		notificationManager.cancel(id_notificacion);
 	}
 	
 	@Override

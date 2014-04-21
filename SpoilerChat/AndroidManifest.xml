@@ -9,9 +9,13 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+        
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="15" />
+    
 
     <application        
         android:allowBackup="true"
@@ -32,6 +36,11 @@
                 android:name="android.support.UI_OPTIONS"      
                 android:value="splitActionBarWhenNarrow" />
         </activity>
+        
+        <service
+            android:name="com.app.spoilerchat.tools.WindowFlotant"
+            android:exported="true" />
+        
     </application>
 
 </manifest>
